@@ -1,0 +1,86 @@
+public class ReproductorMusica {
+    
+    //ATRIBUTOS
+    private String [] canciones;
+    private int [] cancionesFavoritas;
+    private boolean pausado = true;
+    private int cancionReproduciendo = 0;
+    
+    //MÉTODOS
+    public ReproductorMusica(String[] canciones) {
+        this.canciones=canciones;
+        int numero = canciones.length;
+        this.cancionesFavoritas= new int[numero];
+        for (int i = 0; i <canciones.length; i++ ){
+            cancionesFavoritas[i]= -1;
+        }
+
+    }
+    
+    public void proximaCancion(){
+        this.cancionReproduciendo = (this.cancionReproduciendo + 1) % (canciones.length);
+        return;
+    }
+    
+    public void devolverCancion(){
+        this.cancionReproduciendo = (this.cancionReproduciendo + canciones.length - 1) % (canciones.length);
+        return;
+    }
+    
+    public void cambiarEstadoReproduccion(){
+        if(this.pausado){
+            this.pausado = false;
+            return;
+        }
+        else{
+            this.pausado = true;
+            return;
+        }
+        
+        
+    }
+    
+    //NO SE DEBE PREOCUPAR POR DESARROLLAR ESTE MÉTODO. ¡NO ELIMINARLO NI MODIFICARLO!
+    public void agregarCancionesFavoritas(){
+        for(int i = 0; i < cancionesFavoritas.length; i++)
+            if(cancionesFavoritas[i] == cancionReproduciendo)
+                return;
+            else if(cancionesFavoritas[i] == -1){
+                cancionesFavoritas[i] = cancionReproduciendo;
+                return;
+            }                
+    }
+
+    public String[] getCanciones() {
+        return this.canciones;
+    }
+
+    public void setCanciones(String[] canciones) {
+        this.canciones = canciones;
+    }
+
+    public int[] getCancionesFavoritas() {
+        return this.cancionesFavoritas;
+    }
+
+    public void setCancionesFavoritas(int[] cancionesFavoritas) {
+        this.cancionesFavoritas = cancionesFavoritas ;
+    }
+
+    public boolean isPausado() {
+        return this.pausado;
+    }
+
+    public void setPausado(boolean pausado) {
+        this.pausado = pausado;
+    }
+
+    public int getCancionReproduciendo() {
+        return this.cancionReproduciendo;
+    }
+
+    public void setCancionReproduciendo(int cancionReproduciendo) {
+        this.cancionReproduciendo = cancionReproduciendo;
+    }
+    
+}
