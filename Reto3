@@ -1,0 +1,131 @@
+Usuario moodle
+public class UsuarioMoodle {
+   private String nombreCompleto;
+    private String documentoIdentidad;
+    private String password;
+    private String correo;
+    private String descripcion;
+
+    public UsuarioMoodle(String nombreCompleto, String documentoIdentidad, String password, String correo, String descripcion) {
+        this.nombreCompleto = nombreCompleto;
+        this.documentoIdentidad = documentoIdentidad;
+        this.password = password;
+        this.correo = correo;
+        this.descripcion = descripcion;
+
+    }
+    public void editarPerfil(String nombreCompleto, String documentoIdentidad, String password, String correo, String descripcion) {
+        this.nombreCompleto = nombreCompleto;
+        this.documentoIdentidad = documentoIdentidad;
+        this.password = password;
+        this.correo = correo;
+        this.descripcion = descripcion;
+
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    public String getDocumentoIdentidad() {
+        return documentoIdentidad;
+    }
+
+    public void setDocumentoIdentidad(String documentoIdentidad) {
+        this.documentoIdentidad = documentoIdentidad;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+}
+----------------------------------------------
+Tripulante
+
+
+public class Tripulante extends UsuarioMoodle{
+    private double[] calificaciones;
+    private boolean[] entregas;
+
+    public Tripulante(String nombreCompleto, String documentoIdentidad, String password, String correo, String descripcion, int n) {
+        super(nombreCompleto, documentoIdentidad, password, correo, descripcion);
+        this.calificaciones = new double[n];
+        this.entregas = new boolean[n];
+        for (int i = 0; i < n; i++) {
+            this.entregas [i] = false;
+        }
+
+    }
+
+    public void resolverReto(int retoAEntregar) {
+        entregas[retoAEntregar]=(true);
+    }
+
+    public double[] getCalificaciones() {
+        return calificaciones;
+    }
+
+    public void setCalificaciones(double[] calificaciones) {
+        this.calificaciones = calificaciones;
+    }
+
+    public boolean[] getEntregas() {
+        return entregas;
+    }
+
+    public void setEntregas(boolean[] entregas) {
+        this.entregas = entregas;
+    }
+}
+---------------------------------
+Formador
+
+
+public class Formador extends UsuarioMoodle{
+    public String escalafon;
+
+    public Formador(String escalafon, String nombreCompleto, String documentoIdentidad, String password, String correo, String descripcion) {
+        super(nombreCompleto, documentoIdentidad, password, correo, descripcion);
+        this.escalafon = escalafon;
+    }
+
+    public String getEscalafon() {
+        return escalafon;
+    }
+
+    public void setEscalafon(String escalafon) {
+        this.escalafon = escalafon;
+    }
+
+    public void calificar(Tripulante tripulanteACalificar, int k) {
+        if (tripulanteACalificar.getEntregas()[k] == true) {
+            tripulanteACalificar.getCalificaciones()[k] = 5;
+        }
+
+    }
+    
+}
