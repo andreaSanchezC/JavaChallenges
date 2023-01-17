@@ -1,0 +1,23 @@
+public class Solution{
+    public static int [] reporte(int [] compra){
+        int suma = 0;
+        int mayor = compra[0];
+        int menor = compra[0];
+        for (int i = 0; i<compra.length; i++) {
+            suma =suma+compra[i];
+            if (compra[i] > mayor) {
+            mayor = compra[i];
+            }
+            if (compra[i] < menor) {
+            menor = compra[i];
+            }
+        }
+        int [] reporte = {suma, menor, mayor};
+        int i = 0;
+        while(i < 3){
+        System.out.println(reporte[i]);
+        i++;
+        }
+    return reporte;
+    }
+}
